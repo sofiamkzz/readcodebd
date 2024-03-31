@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
+        <div class="container">
+          <a class="navbar-brand">Admin</a>
+          <form action="/logout">
+            <button type="submit"><a href="/logout" id="asubmit">Logout</a></button>
+          </form>
+    </nav>
+    <% if(systemMessage) { %>
+    <p id="systemMessage">
+      <%= systemMessage %>
+    </p>
+    <% } %>
+    <br><br>
+    <div class="list">
+        <% users.forEach(user => { %>
+            <div class="row">
+                <p class="attribute">Name:</p>
+                <p class="data">
+                    <%=user.name%>
+                </p> | <p class="attribute">Email:</p>
+                <p class="data">
+                    <%=user.email%>
+                </p>
+                <a href="/delete/<%=user.email%>"><button type="button" class="btn btn-danger">Delete</button></a>
+            </div>
+        <% }); %>
+    </div>
+    <script>
+    setTimeout(() => {
+        const systemMessage = document.getElementById('systemMessage');
+        if (systemMessage) {
+            systemMessage.style.opacity = 0;
+        }
+    }, 3000);
+    </script>
+</body>
+</html>
