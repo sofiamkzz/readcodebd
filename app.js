@@ -54,7 +54,7 @@ app.post('/login', controller.login);
 // Rota para processar os dados de registro de usuários
 app.post('/register', controller.register);
 
-const PORT = process.env.port || 3000;
+const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`O servidor está rodando na porta ${PORT}`);
 });
